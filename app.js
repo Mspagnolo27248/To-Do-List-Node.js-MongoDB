@@ -1,5 +1,6 @@
 const express = require("express")
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const { render } = require("ejs");
 
 const app = express()
 app.set("view engine", 'ejs');
@@ -13,7 +14,11 @@ app.get("/",(req,res)=>{
 })
 
 
-
+app.post("/",function(req,res){
+ var inputEmail = req.body.inputEmail
+ var inputPassword  = req.body.inputPassword
+res.render("post.ejs",{inputEmail:inputEmail,inputPassword:inputPassword})
+});
 
 
 
