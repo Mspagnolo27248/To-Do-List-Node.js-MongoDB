@@ -13,7 +13,7 @@
 <body>
 
   <div class="box" id="heading">
-    <h1> 
+    <h1>
       <%=currentDay%>
     </h1>
   </div>
@@ -22,20 +22,25 @@
   <div class="box">
 
     <% for (let i=0; i< topics.length; i++){ %>
+      <form action="/delete" method="post">
       <div class="item">
-        <input type="checkbox">
-        <p> <%= topics[i] %></p>
-        </div>
-        <% } %>
+      <input type="checkbox" name = "itemBox" value="<%=topics[i]%>" onChange = "this.form.submit()">
+      <p>
+        <%= topics[i] %>
+      </p>
+  </div>
+  </form>
 
-        <form class="item" action="/" method="post">
-          <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-          <button type="submit" class="button" name="button">+</button>
-        </form>
-      </div>
+  <% } %>
+
+    <form class="item" action="/" method="post">
+      <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+      <button type="submit" class="button" name="button">+</button>
+    </form>
+    </div>
 
 
-   
+
 
 </body>
 
