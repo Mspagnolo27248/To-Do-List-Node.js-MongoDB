@@ -107,13 +107,30 @@ app.post("/", function (req, res) {
 
 app.post("/delete", function (req, res) {
     var selectedItem = req.body.itemBox;
-    var itemIndex = topics.indexOf(selectedItem);
+    var selectedList = req.body.listName
     console.log(selectedItem);
-    console.log(itemIndex);
-    if (itemIndex > -1) {
-        topics.splice(itemIndex, 1);
+    console.log(selectedList);
+
+    if (selectedList==="Today"){
+        Item.findByIdAndRemove(selectedItem,function(err){
+            if(!err){
+                res.redirect("/")
+            }
+        });
+    
     }
-    res.redirect("/")
+    else{
+        //TODO
+        List.findOneAndUpdate({name:selectedList},{$pull:{items:{_id:selectedItem}}},function(err,foundList){
+       // List.findOneAndUpdate({name: listName}, {$pull: {items: {_id: checkedItemId}}}, function(err, foundList){
+            if(!err){
+                res.redirect("/"+selectedList);
+            }
+           
+        });
+       
+    }
+  
 });
 
 

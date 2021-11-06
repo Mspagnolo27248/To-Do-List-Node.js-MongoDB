@@ -25,6 +25,7 @@
       <form action="/delete" method="post">
       <div class="item">
       <input type="checkbox" name = "itemBox" value="<%=newListItems[i].id%>" onChange = "this.form.submit()">
+      <input type="hidden" name="listName" value= <%=listTitle%>>
       <p>
         <%= newListItems[i].name %>
       </p>
