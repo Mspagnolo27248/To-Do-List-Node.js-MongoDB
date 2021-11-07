@@ -13,7 +13,7 @@ app.use(express.static("public"));
 
 
 // DB Connection
-const dbUrl = "mongodb+srv://mspagnolo-admin:orange11@cluster0.lxizv.mongodb.net/ToDoList?retryWrites=true&w=majority"
+const dbUrl = "mongodb+srv://mspagnolo-admin:password@cluster0.lxizv.mongodb.net/ToDoList?retryWrites=true&w=majority"
 mongoose.connect(dbUrl);
 
 
